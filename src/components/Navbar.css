@@ -24,7 +24,7 @@
 
 .logo {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.5px;
 }
 
@@ -103,4 +103,16 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.nav-logo-img {
+    height: 90px;
+    width: auto;
+    filter: drop-shadow(0 0 5px var(--accent-primary));
+    transition: transform 0.3s;
+}
+
+.nav-logo-img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px var(--accent-secondary));
 }

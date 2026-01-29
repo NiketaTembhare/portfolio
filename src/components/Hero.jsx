@@ -28,7 +28,7 @@ const Hero = () => {
                         <span className="prompt">&gt;</span>
                         <span className="typewriter-text">
                             <Typewriter
-                                words={['Full Stack Developer', 'Software Engineer', 'Robotics Enthusiast', 'AI/ML Learner']}
+                                words={['Web Developer', 'Software Engineer', 'AI/ML Learner']}
                                 loop={0}
                                 cursor
                                 cursorStyle='_'
@@ -58,7 +58,7 @@ const Hero = () => {
                 >
                     <div className="profile-wrapper">
                         <div className="profile-frame">
-                            <img src="/profile-pic.png" alt="Niketa Tembhare" className="profile-img" />
+                            <img src={`${import.meta.env.BASE_URL}profile.jpg`} alt="Niketa Tembhare" className="profile-img" />
                             <div className="scan-line"></div>
                         </div>
                         <div className="tech-ring ring-1"></div>

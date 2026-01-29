@@ -25,7 +25,7 @@ const Navbar = () => {
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container nav-container">
                 <a href="#" className="logo">
-                    Port<span className="highlight">folio</span>.
+                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" className="nav-logo-img" />
                 </a>
 
                 <div className="desktop-menu">
