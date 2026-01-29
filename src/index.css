@@ -1,0 +1,189 @@
+:root {
+  /* Cyber / Glitch Theme */
+  --bg-primary: #020202;
+  --bg-secondary: #080808;
+  --bg-card: #0f0f0f;
+
+  --text-primary: #e0e0e0;
+  --text-secondary: #00f3ff;
+
+  --accent-primary: #00f3ff;
+  /* Cyan */
+  --accent-secondary: #ff00ff;
+  /* Neon Magenta */
+  --accent-tertiary: #00ff41;
+  /* Hacker Green */
+
+  --font-main: 'Share Tech Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+
+  --transition-fast: 0.2s ease;
+
+  --border-color: rgba(0, 243, 255, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: crosshair;
+  /* Custom cursor */
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CRT Scanline Background */
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 2px 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Glitch Animation Keyframes */
+@keyframes glitch {
+  0% {
+    transform: translate(0)
+  }
+
+  20% {
+    transform: translate(-2px, 2px)
+  }
+
+  40% {
+    transform: translate(-2px, -2px)
+  }
+
+  60% {
+    transform: translate(2px, 2px)
+  }
+
+  80% {
+    transform: translate(2px, -2px)
+  }
+
+  100% {
+    transform: translate(0)
+  }
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+
+  20% {
+    transform: skew(-20deg);
+    opacity: 0.8;
+  }
+
+  40% {
+    transform: skew(20deg);
+    opacity: 0.8;
+  }
+
+  60% {
+    transform: skew(-5deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: skew(5deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
+}
+
+a:hover {
+  color: var(--accent-primary);
+  text-shadow: 2px 2px var(--accent-secondary);
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.gradient-text {
+  /* Now a Glitch Text */
+  color: var(--accent-primary);
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display);
+}
+
+.gradient-text::before,
+.gradient-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gradient-text::before {
+  left: 2px;
+  text-shadow: -1px 0 var(--accent-secondary);
+  animation: glitch-skew 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.gradient-text::after {
+  left: -2px;
+  text-shadow: -1px 0 var(--accent-tertiary);
+  animation: glitch-skew 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+.section {
+  padding: 6rem 0;
+  border-bottom: 2px dashed var(--border-color);
+  position: relative;
+}
+
+.section::after {
+  content: '[SEC_END]';
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  background: var(--bg-primary);
+  padding: 0 10px;
+  color: var(--border-color);
+  font-size: 0.8rem;
+}
