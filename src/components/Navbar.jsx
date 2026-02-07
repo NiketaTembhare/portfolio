@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import './Navbar.css';
 import { Menu, X } from 'lucide-react';
 
@@ -16,7 +17,6 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
         { name: 'Projects', href: '#projects' },
         { name: 'Certifications', href: '#certificates' },
         { name: 'Skills', href: '#skills' },
@@ -41,23 +41,32 @@ const Navbar = () => {
                 <button
                     className="mobile-toggle"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    style={{ zIndex: 1001, position: 'relative' }}
                 >
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
 
-                {isMobileMenuOpen && (
-                    <div className="mobile-menu">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="mobile-link"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                {link.name}
-                            </a>
-                        ))}
-                    </div>
+                {isMobileMenuOpen && createPortal(
+                    <>
+                        <div
+                            className="mobile-menu-overlay"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            style={{ zIndex: 998 }}
+                        />
+                        <div className="mobile-menu" style={{ zIndex: 999 }}>
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className="mobile-link"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </div>
+                    </>,
+                    document.body
                 )}
             </div>
         </nav>
