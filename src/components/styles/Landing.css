@@ -1,0 +1,408 @@
+/* ================================================
+   HERO LANDING PAGE – Inspiration-matched redesign
+   Palette: pink #ff6ec7 | purple #c481ff | red #d43b5e | dark #0b080c
+   ================================================ */
+
+/* ---- Layout ---- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b080c;
+  overflow: hidden;
+}
+
+/* ---- Left content panel ---- */
+.hero-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 100px 5% 60px 6%;
+  max-width: 55%;
+  min-height: 100vh;
+}
+
+/* ---- Badge ---- */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #d4d4d4;
+  margin-bottom: 32px;
+  width: fit-content;
+  backdrop-filter: blur(6px);
+  animation: fadeSlideDown 0.8s ease both;
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ---- Headline ---- */
+.hero-title {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  animation: fadeSlideUp 0.9s ease 0.15s both;
+}
+
+.hero-title-accent {
+  /* pink-to-purple gradient text */
+  background: linear-gradient(90deg, #ff6ec7 0%, #c481ff 60%, #d43b5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Subtitle ---- */
+.hero-subtitle {
+  margin: 24px 0 40px;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  color: #9a9a9a;
+  max-width: 440px;
+  animation: fadeSlideUp 0.9s ease 0.3s both;
+}
+
+/* ---- CTA buttons ---- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  animation: fadeSlideUp 0.9s ease 0.45s both;
+}
+
+.hero-btn-primary,
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.hero-btn-primary {
+  background: linear-gradient(135deg, #d43b5e, #ff6ec7);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 20px rgba(212, 59, 94, 0.45);
+}
+.hero-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(212, 59, 94, 0.65);
+  color: #fff;
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  border: 1.5px solid rgba(255, 110, 199, 0.5);
+  color: #ff6ec7;
+}
+.hero-btn-secondary:hover {
+  border-color: #ff6ec7;
+  background: rgba(255, 110, 199, 0.08);
+  transform: translateY(-3px);
+  color: #ff6ec7;
+}
+
+/* ========================================
+   Right photo panel
+   ======================================== */
+.hero-photo-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Radial glow behind the photo — the vivid red/pink from the inspiration */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 80% at 60% 40%,
+    #c0162b 0%,
+    #7a0020 35%,
+    #2a0010 65%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* Soft fade on the left edge so photo blends into dark content panel */
+.hero-photo-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(to right, #0b080c, transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Soft fade at bottom */
+.hero-photo-panel::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(to top, #0b080c, transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  animation: fadeIn 1.2s ease 0.2s both;
+}
+
+/* ---- Name card (bottom-right of photo panel) ---- */
+.hero-namecard {
+  position: absolute;
+  bottom: 32px;
+  right: 28px;
+  z-index: 10;
+  background: linear-gradient(135deg, #d43b5e, #a0193a);
+  padding: 12px 22px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  animation: fadeSlideUp 0.9s ease 0.6s both;
+}
+
+.hero-namecard-name {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.hero-namecard-role {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ================================================
+   LEGACY helpers (used by Navbar circles / nav-fade)
+   ================================================ */
+.landing-circle1 {
+  top: 0%;
+  left: 0%;
+  z-index: 15;
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background-color: #fb8dff;
+  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
+  filter: blur(60px);
+  border-radius: 50%;
+  animation: loadingCircle 5s linear infinite;
+}
+
+@keyframes loadingCircle {
+  0% { transform: translate(-95%, -75%) rotateZ(0deg); }
+  100% { transform: translate(-95%, -75%) rotateZ(360deg); }
+}
+
+.landing-circle2 {
+  top: 50%;
+  right: 0%;
+  transform: translate(calc(100% - 2px), -50%);
+  z-index: 9;
+  position: fixed;
+  display: none;
+  width: 300px;
+  height: 300px;
+  background-color: #fb8dff;
+  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
+  filter: blur(50px);
+  border-radius: 50%;
+  animation: loadingCircle2 5s linear infinite;
+}
+
+@keyframes loadingCircle2 {
+  100% { transform: translate(calc(100% - 2px), -50%) rotate(360deg); }
+}
+
+.nav-fade {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 130px;
+  background-image: linear-gradient(0deg, transparent, var(--backgroundColor) 70%);
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0;
+  left: 0;
+}
+
+/* ================================================
+   ANIMATIONS
+   ================================================ */
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+
+/* Tablet: stack vertically */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    min-height: auto;
+    padding: 120px 6% 40px;
+    z-index: 5;
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 8, 12, 0.92) 0%,
+      rgba(11, 8, 12, 0.85) 100%
+    );
+  }
+
+  .hero-photo-panel {
+    position: relative;
+    width: 100%;
+    height: 55vw;
+    min-height: 280px;
+    max-height: 420px;
+  }
+
+  .hero-photo-panel::before {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .hero-namecard {
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+/* Small mobile */
+@media screen and (max-width: 480px) {
+  .hero-content {
+    padding: 100px 5% 32px;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .hero-namecard {
+    padding: 9px 14px;
+  }
+
+  .hero-namecard-name {
+    font-size: 12px;
+  }
+
+  .hero-namecard-role {
+    font-size: 10px;
+  }
+}
+
+/* Desktop: side-by-side */
+@media screen and (min-width: 769px) {
+  .hero-section {
+    flex-direction: row;
+  }
+
+  .hero-content {
+    min-height: 100vh;
+    width: 55%;
+  }
+
+  .hero-photo-panel {
+    width: 45%;
+    height: 100vh;
+  }
+}
+
+/* Large desktop */
+@media screen and (min-width: 1400px) {
+  .hero-content {
+    padding: 110px 6% 60px 8%;
+  }
+}
+
+/* Show circle 2 at wider screens */
+@media screen and (min-width: 500px) {
+  .landing-circle2 {
+    display: block;
+  }
+}

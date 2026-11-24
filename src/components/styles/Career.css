@@ -1,0 +1,254 @@
+/* ================================================
+   CAREER SECTION — vertical timeline
+   ================================================ */
+.career-section {
+  width: 100%;
+  padding: 80px 6%;
+  box-sizing: border-box;
+  background: #0b080c;
+  position: relative;
+}
+
+.career-section::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.career-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+.career-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 56px;
+}
+
+.career-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #ff6ec7;
+  text-transform: uppercase;
+}
+
+.career-heading {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.career-heading-accent {
+  background: linear-gradient(90deg, #ff6ec7 0%, #c481ff 60%, #d43b5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Timeline wrapper */
+.career-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Vertical line */
+.career-timeline-line {
+  position: absolute;
+  left: 22px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    #ff6ec7 0%,
+    #c481ff 50%,
+    rgba(196,129,255,0.1) 100%
+  );
+  border-radius: 999px;
+}
+
+/* Each entry row */
+.career-entry {
+  display: flex;
+  gap: 36px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.career-entry:last-child {
+  padding-bottom: 0;
+}
+
+/* Dot */
+.career-dot-wrap {
+  flex-shrink: 0;
+  width: 46px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 14px;
+  justify-content: center;
+}
+
+.career-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff6ec7;
+  box-shadow: 0 0 0 3px rgba(255,110,199,0.2), 0 0 12px rgba(255,110,199,0.5);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Last dot glows more (current role) */
+.career-entry:last-child .career-dot {
+  background: #c481ff;
+  box-shadow: 0 0 0 4px rgba(196,129,255,0.2), 0 0 20px rgba(196,129,255,0.6);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(196,129,255,0.2), 0 0 20px rgba(196,129,255,0.6); }
+  50%       { box-shadow: 0 0 0 8px rgba(196,129,255,0.1), 0 0 30px rgba(196,129,255,0.9); }
+}
+
+/* Card */
+.career-card {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.career-card:hover {
+  border-color: rgba(255,110,199,0.25);
+  background: rgba(255,110,199,0.03);
+  transform: translateX(4px);
+}
+
+/* Card top: year + role */
+.career-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.career-year {
+  font-family: "Geist", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255,110,199,0.25);
+  flex-shrink: 0;
+  letter-spacing: -1px;
+  min-width: 60px;
+}
+
+.career-entry:last-child .career-year {
+  color: rgba(196,129,255,0.35);
+}
+
+.career-role {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+
+.career-company {
+  margin: 4px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #c481ff;
+}
+
+.career-desc {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #777;
+}
+
+/* Tags */
+.career-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.career-tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid rgba(255,110,199,0.2);
+  color: #ff6ec7;
+  background: rgba(255,110,199,0.05);
+  transition: all 0.2s ease;
+}
+
+.career-card:hover .career-tag {
+  border-color: rgba(255,110,199,0.4);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .career-section {
+    padding: 64px 5%;
+  }
+
+  .career-header {
+    margin-bottom: 40px;
+  }
+
+  .career-entry {
+    gap: 20px;
+  }
+
+  .career-dot-wrap {
+    width: 32px;
+  }
+
+  .career-timeline-line {
+    left: 15px;
+  }
+
+  .career-card-top {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .career-year {
+    font-size: 1.4rem;
+  }
+
+  .career-card {
+    padding: 20px;
+  }
+}

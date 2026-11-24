@@ -1,0 +1,242 @@
+/* ================================================
+   WORK SECTION — card grid layout
+   ================================================ */
+.work-section {
+  width: 100%;
+  padding: 80px 6%;
+  box-sizing: border-box;
+  background: #0b080c;
+  position: relative;
+}
+
+/* Subtle top separator */
+.work-section::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.work-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ---- Header ---- */
+.work-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 48px;
+}
+
+.work-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #ff6ec7;
+  text-transform: uppercase;
+}
+
+.work-heading {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.work-heading-accent {
+  background: linear-gradient(90deg, #ff6ec7 0%, #c481ff 60%, #d43b5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Grid ---- */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* ---- Card ---- */
+.work-card {
+  position: relative;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.work-card:hover {
+  border-color: rgba(255,110,199,0.3);
+  background: rgba(255,110,199,0.03);
+  transform: translateY(-4px);
+}
+
+/* Accent bar at bottom (reveals on hover) */
+.work-card-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6ec7, #c481ff);
+  border-radius: 0 0 16px 16px;
+  transition: width 0.4s ease;
+}
+
+.work-card:hover .work-card-bar {
+  width: 100%;
+}
+
+/* Top row */
+.work-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work-num {
+  font-size: 2.4rem;
+  font-weight: 800;
+  font-family: "Geist", sans-serif;
+  line-height: 1;
+  color: rgba(255,110,199,0.2);
+  letter-spacing: -1px;
+}
+
+.work-cat {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #c481ff;
+  background: rgba(196,129,255,0.1);
+  border: 1px solid rgba(196,129,255,0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Title */
+.work-name {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+/* Description */
+.work-desc {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #777;
+  flex-grow: 1;
+}
+
+/* Tags */
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.work-tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  border: 1px solid rgba(196,129,255,0.25);
+  color: #c481ff;
+  background: rgba(196,129,255,0.06);
+  transition: all 0.2s ease;
+}
+
+.work-card:hover .work-tag {
+  border-color: rgba(196,129,255,0.45);
+}
+
+/* Action buttons */
+.work-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.work-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+}
+
+.work-btn-ghost {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  color: #ccc;
+}
+
+.work-btn-ghost:hover {
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+
+.work-btn-primary {
+  background: linear-gradient(135deg, #d43b5e, #ff6ec7);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(212,59,94,0.3);
+}
+
+.work-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212,59,94,0.5);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+  .work-section {
+    padding: 64px 5%;
+  }
+  .work-header {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-card {
+    padding: 24px 20px 20px;
+  }
+  .work-num {
+    font-size: 2rem;
+  }
+}
